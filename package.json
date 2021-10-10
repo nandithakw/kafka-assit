@@ -1,0 +1,71 @@
+{
+  "name": "kafka-assit",
+  "version": "1.0.0",
+  "description": "kafka-assit",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nandithakw/kafka-assit.git"
+  },
+  "keywords": [
+    "kafka",
+    "kafka-assit",
+    "kafka",
+    "producer"
+  ],
+  "author": "nandithakw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nandithakw/kafka-assit/issues"
+  },
+  "homepage": "https://github.com/nandithakw/kafka-assit#readme",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.60",
+    "@electron-forge/maker-deb": "^6.0.0-beta.60",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.60",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.60",
+    "@electron-forge/maker-zip": "^6.0.0-beta.60",
+    "electron": "^13.2.2"
+  },
+  "dependencies": {
+    "datatables.net": "^1.11.2",
+    "datatables.net-autofill": "^2.3.9",
+    "datatables.net-bs5": "^1.11.2",
+    "datatables.net-dt": "^1.11.2",
+    "electron-squirrel-startup": "^1.0.0",
+    "kafkajs": "^1.15.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "kafka_assit"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}
