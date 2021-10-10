@@ -27,8 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
 async function decsribeCluster() {
 
     await admin.connect();
-
+    let topicList= await admin.listTopics();
     let details = await admin.describeCluster();
+    
     console.log(details);
     await admin.disconnect();
 
