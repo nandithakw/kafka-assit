@@ -10,7 +10,7 @@ var connectionsDatatable;
 
 
 
-function highlight_row() {
+function setRowClickAction() {
   var table = document.getElementById('connectionsTable');
   var cells = table.getElementsByTagName('td');
 
@@ -77,7 +77,7 @@ window.addEventListener('DOMContentLoaded', event => {
   }
 
 
-  highlight_row();
+  setRowClickAction();
 });
 
 

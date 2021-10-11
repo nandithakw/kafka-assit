@@ -1,21 +1,17 @@
 
 const { Kafka } = require('kafkajs');
 const { GetURLParameter } = require('./services/utils');
-
-const kafka = new Kafka({
-  clientId: 'my-app',
-  //brokers: ["172.15.100.210:9092", "172.15.100.210:9093", "172.15.100.210:9094", "172.15.100.211:9092", "172.15.100.211:9093", "172.15.100.211:9094"]
-
-  brokers: ['10.201.206.24:9092', '10.201.206.24:9093', '10.201.206.24:9094', '10.201.206.25:9092', '10.201.206.25:9093', '10.201.206.25:9094', '10.201.206.26:9092', '10.201.206.26:9093', '10.201.206.26:9094']
-});
-
+const ConfigStore = require("./services/config-store");
+var kafka;
+var admin;
+var producer;
 const publishButton = document.getElementById("publish-btn");
-
+const topicNameElement =document.getElementById("topicName");
 publishButton.addEventListener("click", async () => {
  
   let message = document.getElementById("publishingMessage").value;
-  let topicName = document.getElementById("topicName").value;
-  const producer = kafka.producer();
+  let topicName=topicNameElement.value;
+   producer = kafka.producer();
   console.log("Follwoing is ready to be published", topicName, message);
   await producer.connect();
 
@@ -32,6 +28,23 @@ publishButton.addEventListener("click", async () => {
 
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  let topicName = GetURLParameter("topicName");
+  topicNameElement.value = topicName;
+  let connectionName = GetURLParameter("connectionName");
+  //let clusterNameDisplayEle = document.getElementById("clusterNameDisplay");
+  //clusterNameDisplayEle.innerHTML = connectionName;
+  let configStore = new ConfigStore();
+  let conn = configStore.readFileByName(connectionName);
+  if (!conn) {
+      return;
+  }
+  kafka = new Kafka({
+      clientId: 'kafka-assit',
+      brokers: conn.brokers
+  });
+  
+});
 
 
 
