@@ -117,7 +117,7 @@ out
 /bazel-out
 
 # Node
-/node_modules
+kafka-assit-ui/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -139,14 +139,16 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+kafka-assit-ui/.angular/cache
+kafka-assit-ui/.sass-cache/
+kafka-assit-ui/connect.lock
+kafka-assit-ui/coverage
+kafka-assit-ui/libpeerconnection.log
+kafka-assit-ui/testem.log
+kafka-assit-ui/typings
 
 # System files
 .DS_Store
 Thumbs.db
+
+ui

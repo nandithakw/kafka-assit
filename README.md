@@ -1,2 +1,0 @@
-# kafka-assit
-kafka-assit

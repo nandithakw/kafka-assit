@@ -1,72 +1,30 @@
 {
+  "main": "app.js",
+  "type": "module",
+  "productName": "Kafka Assit",
   "name": "kafka-assit",
   "version": "1.0.0",
-  "description": "kafka-assit",
-  "main": "main.js",
+  "bin": "./app.bundle.js",
+  "author": "no body",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nandithakw/kafka-assit.git"
-  },
-  "keywords": [
-    "kafka",
-    "kafka-assit",
-    "kafka",
-    "producer"
-  ],
-  "author": "nandithakw",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nandithakw/kafka-assit/issues"
-  },
-  "homepage": "https://github.com/nandithakw/kafka-assit#readme",
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.60",
-    "@electron-forge/maker-deb": "^6.0.0-beta.60",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.60",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.60",
-    "@electron-forge/maker-zip": "^6.0.0-beta.60",
-    "electron": "^13.2.2",
-    "electron-reloader": "^1.2.1"
+    "start": "node -e \"console.log('!important type should be module' )\" && node ./app.js",
+    "bundle": "node -e \"console.log('!important type should be module' )\" && npx webpack --config webpack.config.js",
+    "pack": "node -e \"console.log('!important type should be commonjs' )\" && pkg . -t node16"
   },
   "dependencies": {
-    "datatables.net": "^1.11.2",
-    "datatables.net-autofill": "^2.3.9",
-    "datatables.net-bs5": "^1.11.2",
-    "datatables.net-dt": "^1.11.2",
-    "electron-squirrel-startup": "^1.0.0",
-    "kafkajs": "^1.15.0"
+    "better-sqlite3": "^7.6.2",
+    "kafkajs": "^2.1.0",
+    "sqlite3": "^5.0.11"
   },
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "kafka_assit"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "babel-loader": "^8.2.5",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "pkg": {
+    "assets": "ui/**/*",
+    "outputPath": "dist"
   }
 }
