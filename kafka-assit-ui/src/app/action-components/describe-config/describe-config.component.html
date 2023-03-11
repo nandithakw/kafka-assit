@@ -1,0 +1,30 @@
+<form ngForm class="kafka-assit-form" [formGroup]="actionFromGroup ">
+        <div fxLayout="row" fxLayoutGap="20px">
+                <mat-form-field fxFlex="1 2 50" appearance="outline">
+                        <mat-label>Choose a Connection</mat-label>
+                        <mat-select formControlName="selectedResourceType"
+                                (selectionChange)="onResourceTypeChanged($event)">
+                                <mat-option value="broker">Broker</mat-option>
+                                <mat-option value="topic">Topic</mat-option>
+                                <mat-option value="broker-logger">Broker Logger</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>add_link</mat-icon>
+                </mat-form-field>
+
+
+                <mat-form-field fxFlex="4 1 50" appearance="outline">
+                        <mat-label>Resource</mat-label>
+                        <input formControlName="selectedResource" [matAutocomplete]="autoResources" matInput
+                                placeholder="Placeholder">
+                        <mat-autocomplete #autoResources="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredResources | async" [value]="option">
+                                        {{option}}
+                                </mat-option>
+                        </mat-autocomplete>
+                        <mat-icon matSuffix>playlist_add</mat-icon>
+                </mat-form-field>
+                <button class="kafka-assit-button" (click)="describe()" fxFlex="0 0 20" mat-raised-button
+                        color="primary">Describe</button>
+
+        </div>
+</form>

@@ -16,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ClusterAdminComponent } from './cluster-admin/cluster-admin.component';
 import { ActionDirective } from './action-components/action.directive';
 import { DescribeClusterConfigComponent } from './action-components/describe-cluster-config/describe-cluster-config.component';
+import { DescribeConfigComponent } from './action-components/describe-config/describe-config.component';
 const routes: Routes = [{ path: 'admin', component: ClusterAdminComponent },
   { path: '', component: PublishToTopicComponent },
    { path: 'publish', component: PublishToTopicComponent }
@@ -23,7 +24,8 @@ const routes: Routes = [{ path: 'admin', component: ClusterAdminComponent },
 @NgModule({
   declarations: [
     AppComponent,
-    PublishToTopicComponent,ClusterAdminComponent,ActionDirective,DescribeClusterConfigComponent
+    PublishToTopicComponent,ClusterAdminComponent,ActionDirective,
+    DescribeClusterConfigComponent,DescribeConfigComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -1,4 +1,4 @@
-<form ngForm class="kafka-assit-form" [formGroup]="publishingFromGroup">
+<form ngForm class="kafka-assit-form" [formGroup]="headerFromGroup ">
     <div fxLayout="row" fxLayoutGap="20px">
 
         <mat-form-field fxFlex="1 2 50" appearance="outline">
@@ -15,7 +15,7 @@
         <mat-form-field fxFlex="4 1 50" appearance="outline">
             <mat-label>Action Name</mat-label>
             <input formControlName="action" [matAutocomplete]="autoActionNames" matInput placeholder="Placeholder">
-            <mat-autocomplete (optionSelected)="loadActionComponent()" [displayWith]="displayFnForActionAutoComplete"
+            <mat-autocomplete (optionSelected)="loadActionComponent($event.option.value)" [displayWith]="displayFnForActionAutoComplete"
                 #autoActionNames="matAutocomplete">
                 <mat-option *ngFor="let option of filteredActions | async" [value]="option">
                     {{option.displayName}}
@@ -26,7 +26,8 @@
 
 
     </div>
-    <ng-template  actionHost></ng-template>
+</form> <ng-template actionHost></ng-template>
+<form ngForm class="kafka-assit-form" [formGroup]="displayFromGroup ">
     <div fxLayout="row">
 
         <mat-form-field fxFlex="100%" appearance="outline">
